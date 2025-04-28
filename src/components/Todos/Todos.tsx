@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { ChangeEvent, useEffect, useState } from "react"
 import TodoDataGrid from "../DataGrid"
 import { deleteTodo, getTodos, updateTodoStatus } from "../../api/endpoints/todo"
 import { TodoItem } from "../../types/api"
@@ -8,6 +8,7 @@ import toast from "react-hot-toast"
 const Todos = () => {
   const [todos, setTodos] = useState<TodoItem[]>([]);
   const [loading, setLoading] = useState(false);
+  const [newTask, setNewTask] = useState('')
 
   useEffect(() => {
     fetchTodos();
@@ -50,12 +51,19 @@ const Todos = () => {
     }
   };
 
-  
+  const handleTaskInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setNewTask(value);
+  }
 
   return (
     <Box sx={{ width: '80%', margin: 'auto', display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
       <Box sx={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: 4 }}>
-        <TextField sx={{ width: "80%" }} id="filled-basic" label="New Task" variant="filled" />
+        <TextField
+          sx={{ width: "80%" }} id="filled-basic"
+          value={newTask}
+          onChange={handleTaskInputChange}
+          label="New Task" variant="filled" />
         <Button variant="contained">Add Task</Button>
       </Box>
       <TodoDataGrid rows={todos}
