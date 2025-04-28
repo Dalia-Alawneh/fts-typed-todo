@@ -2,10 +2,11 @@ import { Box, Button, TextField } from "@mui/material"
 import { addTodo } from "../../api/endpoints/todo";
 import toast from "react-hot-toast";
 import { ChangeEvent, FormEvent, useState } from "react";
-import { TodoItem } from "../../types/api";
+import { useTodos } from "../../context/TodoContext";
 
-const TodoForm = ({ setTodos }: { setTodos: (todos: TodoItem[]) => void }) => {
+const TodoForm = () => {
   const [newTask, setNewTask] = useState('')
+  const { dispatch } = useTodos()
 
   const handleTaskInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -16,7 +17,7 @@ const TodoForm = ({ setTodos }: { setTodos: (todos: TodoItem[]) => void }) => {
     e.preventDefault()
     try {
       const { data } = await addTodo({ todo: newTask, completed: false, userId: 1 })
-      setTodos(prev => [data, ...prev]);
+      dispatch({ type: "ADD_TODO", payload: data })
       setNewTask('');
       toast.success('Successfully added!')
     } catch (error) {
