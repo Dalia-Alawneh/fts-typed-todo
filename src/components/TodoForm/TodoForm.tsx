@@ -34,7 +34,7 @@ const TodoForm = () => {
           value={newTask}
           onChange={handleTaskInputChange}
           label="New Task" variant="filled" />
-        <Button variant="contained" type="submit">Add Task</Button>
+        <Button variant="contained" disabled={!newTask} type="submit">Add Task</Button>
       </Box>
     </form>
   )
