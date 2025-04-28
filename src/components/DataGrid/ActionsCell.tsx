@@ -4,7 +4,14 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { ToDoStatus } from '../../types';
-const ActionsCell = ({ status }: { status: boolean }) => {
+
+interface ActionsCellProps {
+  status: boolean;
+  id: number;
+  handleMarkAsCompleted: (id: number) => void;
+  handleDelete: (id: number) => void;
+}
+const ActionsCell = ({ status, id, handleMarkAsCompleted, handleDelete }: ActionsCellProps) => {
   return (
     <Box>
       <Tooltip title={status ? ToDoStatus.completed : "Mark as Completed"}>
@@ -12,7 +19,7 @@ const ActionsCell = ({ status }: { status: boolean }) => {
           <IconButton
             aria-label="mark as completed"
             color="success"
-            // onClick={() => handleMarkAsCompleted(params.row.id)}
+            onClick={() => handleMarkAsCompleted(id)}
             disabled={status}
           >
             {status ? (
@@ -27,7 +34,7 @@ const ActionsCell = ({ status }: { status: boolean }) => {
       <IconButton
         aria-label="delete"
         color="error"
-      // onClick={() => handleDelete(params.row.id)}
+        onClick={() => handleDelete(id)}
       >
         <DeleteIcon />
       </IconButton>

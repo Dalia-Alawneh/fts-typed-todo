@@ -12,3 +12,12 @@ export interface TodosResponse {
     limit: number;
   }
 }
+
+export interface TodoItemResponse {
+  data: {
+    id: number;
+    todo: string;
+    completed: boolean;
+    userId: number;
+  }
+}
