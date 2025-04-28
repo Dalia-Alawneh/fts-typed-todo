@@ -46,7 +46,7 @@ export default function TodoDataGrid({ rows, loading, handleMarkAsCompleted, han
   ];
 
   return (
-    <Box sx={{ height: 700, width: '80%', margin: 'auto' }}>
+    <Box sx={{ height: 700, width: '100%', margin: 'auto' }}>
       <DataGrid
         loading={loading}
         rows={rows}
