@@ -36,14 +36,14 @@ const columns: GridColDef<(ToDoRow[])[number]>[] = [
 
 export default function TodoDataGrid({ rows }: { rows: ToDoRow[] }) {
   return (
-    <Box sx={{ height: 400, width: '80%', margin: 'auto' }}>
+    <Box sx={{ height: 700, width: '80%', margin: 'auto' }}>
       <DataGrid
         rows={rows}
         columns={columns}
         initialState={{
           pagination: {
             paginationModel: {
-              pageSize: 5,
+              pageSize: 10,
             },
           },
         }}

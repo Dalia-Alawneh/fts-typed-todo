@@ -3,10 +3,10 @@ import Todos from "../../components/Todos/Todos"
 
 const Home = () => {
   return (
-    <div>
+    <>
       <Header/>
       <Todos/>
-    </div>
+    </>
   )
 }
 
