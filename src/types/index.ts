@@ -6,5 +6,5 @@ export enum ToDoStatus {
 export type ToDoRow = {
   id: number;
   todo: string;
-  status: ToDoStatus;
+  completed: boolean;
 };

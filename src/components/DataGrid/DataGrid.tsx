@@ -1,10 +1,10 @@
 import Box from '@mui/material/Box';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import StatusCell from './StatusCell';
-import { ToDoRow, ToDoStatus } from '../../types';
+import { ToDoRow } from '../../types';
 import ActionsCell from './ActionsCell';
 
-const columns: GridColDef<(typeof rows)[number]>[] = [
+const columns: GridColDef<(ToDoRow[])[number]>[] = [
   { field: 'id', headerName: 'ID', width: 90 },
   {
     field: 'todo',
@@ -19,7 +19,7 @@ const columns: GridColDef<(typeof rows)[number]>[] = [
     editable: false,
 
     renderCell: (params) => (
-      <StatusCell status={params.row.status as ToDoStatus} />
+      <StatusCell status={params.row.completed} />
     )
   },
   {
@@ -29,18 +29,12 @@ const columns: GridColDef<(typeof rows)[number]>[] = [
     editable: false,
     width: 200,
     renderCell: (params) => (
-      <ActionsCell status={params.row.status as ToDoStatus} />
+      <ActionsCell status={params.row.completed} />
     ),
   },
 ];
-const rows: ToDoRow[] = [
-  { id: 1, todo: 'Buy groceries', status: ToDoStatus.completed },
-  { id: 2, todo: 'Complete homework', status: ToDoStatus.pending },
-  { id: 3, todo: 'Clean the house', status: ToDoStatus.pending },
-  { id: 4, todo: 'Pay bills', status: ToDoStatus.pending },
-];
 
-export default function TodoDataGrid() {
+export default function TodoDataGrid({ rows }: { rows: ToDoRow[] }) {
   return (
     <Box sx={{ height: 400, width: '80%', margin: 'auto' }}>
       <DataGrid

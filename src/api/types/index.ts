@@ -5,8 +5,10 @@ export interface TodoItem {
   userId: number;
 }
 export interface TodosResponse {
-  todos: TodoItem[];
-  total: number;
-  skip: number;
-  limit: number;
+  data: {
+    todos: TodoItem[];
+    total: number;
+    skip: number;
+    limit: number;
+  }
 }

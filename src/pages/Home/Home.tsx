@@ -1,11 +1,11 @@
-import TodoDataGrid from "../../components/DataGrid/DataGrid"
 import Header from "../../components/Header"
+import Todos from "../../components/Todos/Todos"
 
 const Home = () => {
   return (
     <div>
       <Header/>
-      <TodoDataGrid/>
+      <Todos/>
     </div>
   )
 }
