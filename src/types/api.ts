@@ -4,6 +4,7 @@ export interface TodoItem {
   completed: boolean;
   userId: number;
 }
+
 export interface TodosResponse {
   data: {
     todos: TodoItem[];

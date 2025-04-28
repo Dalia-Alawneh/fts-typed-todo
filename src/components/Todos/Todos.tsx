@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react"
 import TodoDataGrid from "../DataGrid"
-import { deleteTodo, getTodos, updateTodoStatus } from "../../api/endpoints/todo"
+import { addTodo, deleteTodo, getTodos, updateTodoStatus } from "../../api/endpoints/todo"
 import { TodoItem } from "../../types/api"
 import { Box, Button, TextField } from "@mui/material"
 import toast from "react-hot-toast"
@@ -56,6 +56,18 @@ const Todos = () => {
     setNewTask(value);
   }
 
+  const handleAddTask = async () => {
+    try {
+      const { data } = await addTodo({ todo: newTask, completed: false, userId: 1 })
+      setTodos(prev => [data, ...prev]);
+      setNewTask('');
+      toast.success('Successfully added!')
+    } catch (error) {
+      toast.error("Error on adding data")
+      console.error(error);
+    }
+  }
+
   return (
     <Box sx={{ width: '80%', margin: 'auto', display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
       <Box sx={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: 4 }}>
@@ -64,7 +76,7 @@ const Todos = () => {
           value={newTask}
           onChange={handleTaskInputChange}
           label="New Task" variant="filled" />
-        <Button variant="contained">Add Task</Button>
+        <Button variant="contained" onClick={handleAddTask}>Add Task</Button>
       </Box>
       <TodoDataGrid rows={todos}
         loading={loading}

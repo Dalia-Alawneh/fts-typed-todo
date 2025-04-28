@@ -1,4 +1,4 @@
-import { TodoItemResponse, TodosResponse } from "../../../types/api";
+import { TodoItem, TodoItemResponse, TodosResponse } from "../../../types/api";
 import Axios from "../../axios";
 
 
@@ -12,4 +12,8 @@ export const updateTodoStatus = async (id: number, completed: boolean): Promise<
 
 export const deleteTodo = async (id: number): Promise<TodoItemResponse> => {
   return await Axios.delete(`/todos/${id}`);
+}
+
+export const addTodo = async (body: Omit<TodoItem, 'id'>): Promise<TodoItemResponse> => {
+  return await Axios.post(`/todos/add`, body);
 }
