@@ -1,9 +1,8 @@
-import { IconButton, Tooltip } from '@mui/material';
 import Box from '@mui/material/Box';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import DeleteIcon from '@mui/icons-material/Delete';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import StatusCell from './StatusCell';
+import { ToDoRow, ToDoStatus } from '../../types';
+import ActionsCell from './ActionsCell';
 
 const columns: GridColDef<(typeof rows)[number]>[] = [
   { field: 'id', headerName: 'ID', width: 90 },
@@ -20,15 +19,7 @@ const columns: GridColDef<(typeof rows)[number]>[] = [
     editable: false,
 
     renderCell: (params) => (
-      <Box sx={{display: 'flex', height: '100%', alignItems: "center", }} >
-        <Box sx={{
-        width: '60px', height: '30px', display: 'flex', justifyContent: 'center', alignItems: "center", padding: '0px 20px', color: 'white',
-        bgcolor: params.row.status === 'Completed' ? 'success.light' : 'warning.light', borderRadius: 10, textAlign: 'center',
-      }}>
-        {params.row.status}
-
-        </Box>
-      </Box>
+      <StatusCell status={params.row.status as ToDoStatus} />
     )
   },
   {
@@ -38,40 +29,15 @@ const columns: GridColDef<(typeof rows)[number]>[] = [
     editable: false,
     width: 200,
     renderCell: (params) => (
-      <Box>
-        <Tooltip title={params.row.status === 'Completed' ? "Completed" : "Mark as Completed"}>
-          <span>
-            <IconButton
-              aria-label="mark as completed"
-              color="success"
-              // onClick={() => handleMarkAsCompleted(params.row.id)}
-              disabled={params.row.status === 'Completed'}
-            >
-              {params.row.status === 'Completed' ? (
-                <CheckCircleIcon />
-              ) : (
-                <CheckCircleOutlineIcon />
-              )}
-
-            </IconButton>
-          </span>
-        </Tooltip>
-        <IconButton
-          aria-label="delete"
-          color="error"
-        // onClick={() => handleDelete(params.row.id)}
-        >
-          <DeleteIcon />
-        </IconButton>
-      </Box>
+      <ActionsCell status={params.row.status as ToDoStatus} />
     ),
   },
 ];
-const rows = [
-  { id: 1, todo: 'Buy groceries', status: 'Pending' },
-  { id: 2, todo: 'Complete homework', status: 'Pending' },
-  { id: 3, todo: 'Clean the house', status: 'Completed' },
-  { id: 4, todo: 'Pay bills', status: 'Pending' },
+const rows: ToDoRow[] = [
+  { id: 1, todo: 'Buy groceries', status: ToDoStatus.completed },
+  { id: 2, todo: 'Complete homework', status: ToDoStatus.pending },
+  { id: 3, todo: 'Clean the house', status: ToDoStatus.pending },
+  { id: 4, todo: 'Pay bills', status: ToDoStatus.pending },
 ];
 
 export default function TodoDataGrid() {
