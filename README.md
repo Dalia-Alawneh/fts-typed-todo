@@ -1,54 +1,63 @@
-# React + TypeScript + Vite
+# ✅ Typed TODO App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and effective TODO list application built with React + TypeScript, styled using Material-UI (MUI), and powered by Context API + useReducer for state management. It uses dummy JSON data to simulate task management functionality. Users can add, update, and delete tasks, as well as toggle their status between pending and completed. Pagination is supported for a better user experience.
 
-Currently, two official plugins are available:
+🌐 [Live Demo](https://fts-typed-todoo.onrender.com/)
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌟 Features
 
-## Expanding the ESLint configuration
+* 📝 **Add New Tasks** through a simple input form
+* 📋 **Task List** displaying ID, description, and status (Pending / Completed)
+* 🔄 **Toggle Task Status** between completed and pending
+* 🗑️ **Delete Tasks** from the list
+* 📄 **Pagination** for navigating large task sets
+* 💾 **Dummy JSON** used for simulating data storage
+* ⚛️ **Global State Management** using Context API and `useReducer`
+* 🛡️ Type Safety powered by TypeScript
+* 🎨 **Responsive UI** built with Material-UI (MUI)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 🛠️ Tech Stack
+
+* **React**
+* **Context API + useReducer**
+* **Material-UI (MUI)**
+* **JavaScript (ES6+)**
+* **Dummy JSON**
+* **TypeScript**
+
+---
+
+## 🚀 Getting Started
+
+```bash
+# Clone the repository
+git clone https://github.com/Dalia-Alawneh/fts-todo-app.git
+
+# Navigate into the project directory
+cd fts-todo-app
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🤝 Contributing
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+Contributions, issues, and feature requests are welcome!
+Feel free to open an issue or submit a pull request.
+
+---
+
+## 👩‍💻 Author
+
+Made with ❤️ by Dalia Alawneh
+🔗 [GitHub](https://github.com/Dalia-Alawneh) • [LinkedIn](https://www.linkedin.com/in/dalia-alawneh/)
+
+---
